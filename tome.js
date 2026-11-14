@@ -4,7 +4,7 @@
 const TOME_WORDS = {
   cover: 'Experiences',
   chapters: [
-    { name: 'Summary', lead: "Completed FlyRank AI's Backend AI Engineering and AI Fluency tracks: nine backend builds and an AI image-matching capstone. 4th-year BS Computer Science student at FEU Institute of Technology, specializing in software engineering, Dean's Lister, looking for a 500-hour internship. 21 certifications, from SAP and PMI to seven Claude Academy courses.", pills: ['1 internship', '21 certifications', "Dean's Lister", 'Open to internships'] },
+    { name: 'Summary', lead: "Completed FlyRank AI's Backend AI Engineering and AI Fluency tracks: nine backend builds and an AI image-matching capstone. 4th-year BS Computer Science student at FEU Institute of Technology, specializing in software engineering, Dean's Lister, looking for a 520-hour or 1,040-hour internship. 21 certifications, from SAP and PMI to seven Claude Academy courses.", pills: ['1 internship', '21 certifications', "Dean's Lister", 'Open to internships'] },
     { name: 'Experience', entries: [{ h: 'Backend AI Engineering Intern', m: 'FlyRank AI, Jul 2026 to Nov 2026. Manila, remote', d: [
       'Backend AI Engineering track: nine builds plus a capstone, each a public GitHub repo built in staged, tested commits.',
       'REST APIs in Python and FastAPI: a CRUD task API with data validation and Swagger docs, moved from SQLite to PostgreSQL in Docker Compose with a persistent volume.',
@@ -44,6 +44,7 @@ const TOME_WORDS = {
       ] },
     ] },
     { name: 'Awards', entries: [
+      { h: 'Overall Best AVP, 1st Place', m: 'FEU Institute of Technology, Nov 2026', d: 'CS Expo 2026, for our Wake&Brake AVP. 105 groups, 400+ students', img: 'csexpo-best-avp', big: true },
       { h: "Dean's Bronze Certificate", m: 'FEU Institute of Technology, Jul 2025', d: '3rd Term, S.Y. 2024-2025', img: 'feu-deans-bronze', verify: ['Verify', 'https://paraverse.feutech.edu.ph/credentials/download/EDITH-2509-1014-3932-55DE'] },
       { h: 'Academic Excellence Award', m: 'San Miguel National High School, Jun 2022', d: 'With High Honors, Grade 11 STEM', img: 'smnhs-academic-excellence', big: true },
     ] },

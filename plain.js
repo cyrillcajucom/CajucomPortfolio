@@ -34,6 +34,7 @@
     el('a', WORKS_WORDS.email, { href: `mailto:${WORKS_WORDS.email}` }),
     el('a', 'LinkedIn', { href: 'https://www.linkedin.com/in/cyrillcajucom/' }),
     el('a', 'GitHub', { href: 'https://github.com/cyrillcajucom' }),
+    el('a', 'Quick portfolio: the same projects on one scrolling page', { href: 'portfolio.html' }),
   ]));
   main.append(talk);
   for (const a of main.querySelectorAll('a')) a.tabIndex = -1; // screen readers still reach them; Tab doesn't land on links nobody can see

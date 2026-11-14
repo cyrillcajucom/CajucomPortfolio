@@ -14,3 +14,6 @@ handoff-tools/
 
 # Cyrill's resume drafts
 Cajucom-Resume.*
+
+# Internal specs and plans (design docs for the quick portfolio page); never pushed
+docs/

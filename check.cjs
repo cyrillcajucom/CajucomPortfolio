@@ -6,7 +6,7 @@ const fs = require('fs');
 const http = require('http');
 const path = require('path');
 
-const TYPES = { '.html': 'text/html', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.png': 'image/png', '.js': 'text/javascript', '.json': 'application/json', '.wasm': 'application/wasm', '.webp': 'image/webp', '.mp3': 'audio/mpeg', '.mp4': 'video/mp4' };
+const TYPES = { '.html': 'text/html', '.css': 'text/css', '.svg': 'image/svg+xml', '.jpg': 'image/jpeg', '.png': 'image/png', '.js': 'text/javascript', '.json': 'application/json', '.wasm': 'application/wasm', '.webp': 'image/webp', '.mp3': 'audio/mpeg', '.mp4': 'video/mp4' };
 const page = () => { const s = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8'); return /^<!doctype/i.test(s) ? s : wrapper(); }; // a full document is served as it is
 const wrapper = () => `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>body{margin:0;font:14px/1.4 system-ui,sans-serif}[hidden]{display:none!important}</style></head><body>${fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8')}</body></html>`; // same skeleton the Artifact host wraps around the file
 
@@ -20,6 +20,9 @@ const wrapper = () => `<!doctype html><html><head><meta charset="utf-8"><meta na
     fs.createReadStream(file).pipe(res);
   }).listen(process.argv[2] === 'serve' ? 8765 : 0);
   if (process.argv[2] === 'serve') return;
+  // portfolio.html is generated from works.js, tome.js and resume.js; it must not fall behind them
+  const { buildPage } = await import('./portfolio/build.mjs');
+  assert.equal(buildPage(__dirname), fs.readFileSync(path.join(__dirname, 'portfolio.html'), 'utf8'), 'portfolio.html is stale, run node portfolio/build.mjs');
   const { chromium } = require('playwright-core');
   const origin = `http://localhost:${server.address().port}/`;
   const browser = await chromium.launch({ channel: 'msedge', args: ['--enable-unsafe-swiftshader', '--use-angle=swiftshader', '--ignore-gpu-blocklist'] });

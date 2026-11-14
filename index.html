@@ -91,6 +91,7 @@ body:not(.inside) #ui { display: none; }
   font: 400 22px/1 var(--mono); letter-spacing: .04em; cursor: pointer;
 }
 #back:hover { background: var(--paper); color: #000; }
+#skip-tour { position: absolute; z-index: 2; top: calc(clamp(16px, 4vw, 48px) + env(safe-area-inset-top, 0px)); right: calc(clamp(16px, 4vw, 64px) + env(safe-area-inset-right, 0px)); background: #000; color: var(--paper); border: 2px solid var(--paper); border-radius: 6px; padding: 11px 14px; font: 400 20px/1 var(--mono); letter-spacing: .04em; text-decoration: none; } #skip-tour:hover, #skip-tour:focus-visible { background: var(--paper); color: #000; } body.inside #skip-tour { display: none; } /* to portfolio.html, the one-page version */
 #links { position: absolute; left: calc(clamp(16px, 4vw, 64px) + env(safe-area-inset-left, 0px)); top: calc(clamp(16px, 4vw, 48px) + env(safe-area-inset-top, 0px)); display: flex; flex-wrap: wrap; gap: 8px; max-width: calc(100% - 220px); }
 #links[hidden] { display: none; }
 #links a { background: rgba(27,60,99,.85); color: #f4ecd8; border: 1.5px solid #f4ecd8; border-radius: 99px; padding: 11px 18px; min-height: 44px; box-sizing: border-box; font: 400 16px/1.2 Righteous, "Segoe UI", sans-serif; white-space: nowrap; text-decoration: none; box-shadow: 0 0 18px rgba(63,193,176,.35); } /* in the Projects box's colours */
@@ -166,6 +167,7 @@ body:not(.in-works) dialog :focus-visible { outline-color: var(--yellow); }
 
 <div id="room">
   <h1 class="sr-only">Cyrill Cajucom, portfolio</h1>
+  <a id="skip-tour" href="portfolio.html">Quick portfolio →</a>
   <canvas id="room3d" aria-hidden="true"></canvas>
   <div class="vignette"></div>
   <div class="loading" role="status" aria-live="polite">
@@ -236,7 +238,7 @@ body:not(.in-works) dialog :focus-visible { outline-color: var(--yellow); }
 <dialog id="zoom" aria-label="Picture"><img alt=""><video controls playsinline preload="none"></video><p></p><span class="zoom-count"></span><button class="zoom-nav prev" type="button" aria-label="Previous picture">‹</button><button class="zoom-nav next" type="button" aria-label="Next picture">›</button></dialog>
 <dialog id="about" aria-labelledby="about-title">
   <h2 id="about-title" class="tape">Cyrill Gerard P. Cajucom</h2>
-  <p>Aspiring software and AI engineer from San Miguel, Bulacan, now based in Manila. I build my own tools solo, from orchestrating AI coding agents to computer vision on the desk. On my thesis, Wake&amp;Brake, I was the project manager and main researcher, and wrote the Arduino alert code. I'm a 4th-year BS Computer Science student at FEU Tech, specializing in software engineering, and I'm looking for a 500-hour internship.</p>
+  <p>Aspiring software and AI engineer from San Miguel, Bulacan, now based in Manila. I build my own tools solo, from orchestrating AI coding agents to computer vision on the desk. On my thesis, Wake&amp;Brake, I was the project manager and main researcher, and wrote the Arduino alert code. I'm a 4th-year BS Computer Science student at FEU Tech, specializing in software engineering, and I'm looking for a 520-hour or 1,040-hour internship.</p>
   <ul class="topics" aria-label="What I work with"><li>AI</li><li>Orchestration</li><li>Computer Vision</li><li>Full-stack</li><li>Hardware</li></ul>
   <dl class="keys">
     <div><dt>Click</dt><dd>Look closer, click again to open</dd></div>
@@ -255,7 +257,7 @@ body:not(.in-works) dialog :focus-visible { outline-color: var(--yellow); }
 </dialog>
 <dialog id="contact" aria-labelledby="contact-title">
   <h2 id="contact-title" class="tape">Say hello</h2>
-  <p>Open to work, and looking for a 500-hour internship.</p>
+  <p>Open to work, and looking for a 520-hour or 1,040-hour internship.</p>
   <p class="address" id="address">cyrillgerardc@gmail.com</p>
   <p class="socials"><a href="https://www.linkedin.com/in/cyrillcajucom/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/cyrillcajucom" target="_blank" rel="noopener">GitHub</a><a href="https://www.facebook.com/cyrillgerardcajucom10" target="_blank" rel="noopener">Facebook</a><a href="https://discord.com/users/700210477288128593" target="_blank" rel="noopener">Discord</a><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=cyrillgerardc@gmail.com" target="_blank" rel="noopener">Gmail</a></p>
   <div class="row"><button type="button" id="copy">Copy address</button><button type="button" class="ghost" data-close>Close</button></div>
@@ -469,7 +471,7 @@ const projects = [
   }) },
 ];
 const items = [hero, stories, ...projects];
-const TICKER = 'OPEN TO WORK. LOOKING FOR A 500-HOUR INTERNSHIP.     ';
+const TICKER = 'OPEN TO WORK. LOOKING FOR A 520-HOUR OR 1,040-HOUR INTERNSHIP.     ';
 const PAGE = { wide: { w: 1640, h: 1040 }, tall: { w: 830, h: 1700 } }; // world size that must fit the screen, with room for the tube's curved edge
 
 /* ---------- Scene state ---------- */
