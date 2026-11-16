@@ -24,8 +24,12 @@ const wrapper = () => `<!doctype html><html><head><meta charset="utf-8"><meta na
   const { buildPage } = await import('./portfolio/build.mjs');
   assert.equal(buildPage(__dirname), fs.readFileSync(path.join(__dirname, 'portfolio.html'), 'utf8'), 'portfolio.html is stale, run node portfolio/build.mjs');
   const { chromium } = require('playwright-core');
+  const visited = (o) => o.addInitScript(() => { try { localStorage.setItem('cc-view', 'room'); } catch {} }); // skip the first-visit chooser (chooser.js)
   const origin = `http://localhost:${server.address().port}/`;
-  const browser = await chromium.launch({ channel: 'msedge', args: ['--enable-unsafe-swiftshader', '--use-angle=swiftshader', '--ignore-gpu-blocklist'] });
+  const launched = await chromium.launch({ channel: 'msedge', args: ['--enable-unsafe-swiftshader', '--use-angle=swiftshader', '--ignore-gpu-blocklist'] });
+  const browser = { close: () => launched.close(),
+    newPage: async (o) => { const p = await launched.newPage(o); await visited(p); return p; },
+    newContext: async (o) => { const c = await launched.newContext(o); await visited(c); return c; } };
 
   if (process.argv[2] === 'calibrate') {
     const page = await browser.newPage({ viewport: { width: 1200, height: 900 } });
@@ -277,7 +281,7 @@ const wrapper = () => `<!doctype html><html><head><meta charset="utf-8"><meta na
     assert.strictEqual(await page.evaluate(() => works.pages[works.page].kind), 'about', 'the first scroll shows the about section');
     await page.waitForTimeout(1500);
     await page.screenshot({ path: `${name}-o-about.png` });
-    assert.ok(await page.evaluate(() => WORKS_BOY_IMG.complete && WORKS_BOY_IMG.naturalWidth > 0), 'the boy picture loads');
+    assert.ok(await page.evaluate(() => ((COARSE && W <= 900) || W < 600) || (WORKS_BOY_IMG.complete && WORKS_BOY_IMG.naturalWidth > 0)), 'the boy picture loads'); // works.js leaves it out on phones on purpose
     await page.keyboard.press('ArrowUp');
     assert.strictEqual(await page.evaluate(() => works.page), 0, 'arrow up goes back one section');
     const pageOf = kind => page.evaluate(k => works.pages.findIndex(p => p.kind === k), kind);

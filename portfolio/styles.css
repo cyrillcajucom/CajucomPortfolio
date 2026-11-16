@@ -2083,3 +2083,25 @@ dialog[open]::backdrop { animation: backdrop-in 0.25s ease; }
 .project-shots { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
 .project-shots a { display: block; cursor: zoom-in; }
 .project-shots figcaption { font-size: 0.88rem; color: var(--grey); margin-top: 8px; }
+
+/* Phones, second pass (2026-11-17) */
+.text-links a, .row-more summary, .cert-verify, .nav-logo { min-height: 44px; display: inline-flex; align-items: center; }
+.row-more summary { display: flex; }
+@media (max-width: 960px) {
+  /* the six cells become short rows: label and title side by side, no tall empty block */
+  .cell { min-height: 0; padding: 18px 20px; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px 12px; }
+  .cell-top { display: contents; }
+  .cell-top .tag { grid-column: 1; grid-row: 1; }
+  .cell-arrow { grid-column: 2; grid-row: 1 / span 2; }
+  .cell > div:last-child { grid-column: 1; grid-row: 2; }
+  .cell-label { margin: 2px 0 2px; font-size: 1.15rem; }
+  .cell-sub { font-size: 0.88rem; }
+  /* footer: the three lists side by side in two columns */
+  .foot-top { grid-template-columns: 1fr 1fr; gap: 28px 20px; }
+  .foot-brand { grid-column: 1 / -1; }
+  /* the glass nav stays glass, but dark enough that page text doesn't read through it */
+  .nav-pill { background: linear-gradient(180deg, rgba(14, 14, 17, 0.86) 0%, rgba(8, 8, 10, 0.82) 100%); }
+  /* slider dots keep their 32px tap area on phones; the visible bar is the ::before */
+  .built-dot, .built-dot.is-active { height: 32px; background: transparent; }
+  .built-dot.is-active::before { background: var(--accent); }
+}
