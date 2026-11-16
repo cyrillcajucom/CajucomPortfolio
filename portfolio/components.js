@@ -53,7 +53,7 @@ export function Navbar({ projects, email }) {
   </dialog>`;
 }
 
-export function Hero({ badge, line1, line2, sub, meta, email }) {
+export function Hero({ line1, line2, sub, email }) {
   return `
   <section id="hero" class="hero">
     <div class="hero-media">
@@ -61,14 +61,12 @@ export function Hero({ badge, line1, line2, sub, meta, email }) {
       <div class="hero-shade"></div>
     </div>
     <div class="hero-inner">
-      <span class="chip glass">${esc(badge)}</span>
       <h1 class="hero-title">${lines(line1, line2)}</h1>
       <p class="hero-sub">${esc(sub)}</p>
       <div class="hero-ctas">
         <a class="btn btn-solid" href="#work"><span>View projects</span></a>
         <a class="btn btn-glass glass" href="mailto:${esc(email)}"><span>Email me</span></a>
       </div>
-      <div class="hero-meta">${meta.map((m) => `<span>${esc(m.toUpperCase())}</span>`).join('')}</div>
     </div>
   </section>`;
 }
@@ -85,12 +83,11 @@ export function TrustedMarquee({ label, row1, row2 }) {
   </section>`;
 }
 
-export function BuiltShowcase({ chip, note, slides }) {
+export function BuiltShowcase({ note, slides }) {
   const first = slides[0];
   return `
   <section id="built" class="built">
     <div class="built-head">
-      <span class="chip glass"><i class="dot"></i>${esc(chip)}</span>
       <h2 class="display"><span class="line">Built <span class="chrome">like this.</span></span></h2>
     </div>
     <div class="built-stage">
@@ -242,11 +239,12 @@ export function WhyUsBento({ eyebrow, line1, line2, tiles, photo }) {
           </li>`).join('')}
       </ol>
     </div>
-    <article class="tile tile-photo" style="background-image:linear-gradient(90deg,#050506 35%,rgba(5,5,6,.6) 60%,rgba(5,5,6,0) 85%),url('${photo.src}')">
-      <div class="tile-photo-inner glass">
+    <article class="about glass">
+      <div class="about-text">
         <h3>${esc(photo.title)}</h3>
         ${photo.lines.map((l) => `<p>${esc(l)}</p>`).join('')}
       </div>
+      <img class="about-img" src="${photo.src}" alt="Cyrill Cajucom" width="800" height="1000" loading="lazy">
     </article>
   </section>`;
 }
@@ -414,7 +412,7 @@ export function ProjectDialog(p) {
     ${list('What it does', p.features)}
     ${list('Results', p.results)}
     ${p.hard ? `<h4>The hardest part</h4><p>${esc(p.hard)}</p>` : ''}
-    ${p.shots.length ? `<h4>Screens</h4><div class="project-shots">${p.shots.map((s) => `<figure><img src="${s.src}" alt="${esc(s.cap)}" loading="lazy"><figcaption>${esc(s.cap)}</figcaption></figure>`).join('')}</div>` : ''}
+    ${p.shots.length ? `<h4>Screens</h4><div class="project-shots">${p.shots.slice(0, 4).map((s) => `<figure><a href="${s.src}" ${ext} title="Open full size"><img src="${s.src}" alt="${esc(s.cap)}" loading="lazy"></a><figcaption>${esc(s.cap)}</figcaption></figure>`).join('')}</div>` : ''}
     <div class="project-links">${p.links.map(([l, h]) => `<a class="btn btn-glass glass btn-sm" href="${esc(h)}" ${ext}><span>${esc(l)} ↗</span></a>`).join('')}</div>
    </div>
   </dialog>`;

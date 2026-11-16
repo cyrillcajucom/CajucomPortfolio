@@ -493,7 +493,7 @@ function resumeDock(L, hot, alpha, dt) { // bottom of the screen: the way to say
   g.save(); g.globalAlpha = alpha;
   g.fillStyle = 'rgba(232,240,237,.8)'; g.strokeStyle = 'rgba(255,255,255,.9)'; g.lineWidth = 1.5; g.beginPath(); g.roundRect(x, y, w, h, h / 2); g.fill(); g.stroke();
   const orb = h - pad * 2; g.drawImage(L.orb, x + pad, y + pad, orb, orb);
-  const bx = x + pad * 2 + orb, bw = w - pad * 4 - orb * 2; g.fillStyle = on('hello') ? '#123e39' : '#1a2422'; g.beginPath(); g.roundRect(bx, y + pad, bw, orb, orb / 2); g.fill(); g.fillStyle = '#f7fbf9'; g.font = `600 17px ${RESUME_SANS}`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('Say hello', bx + bw / 2, y + h / 2 + 1);
+  const bx = x + pad * 2 + orb, bw = w - pad * 4 - orb * 2; g.fillStyle = on('hello') ? '#fff36b' : '#ffe600'; g.beginPath(); g.roundRect(bx, y + pad, bw, orb, orb / 2); g.fill(); g.fillStyle = '#10302d'; g.font = `600 17px ${RESUME_SANS}`; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('Say hello', bx + bw / 2, y + h / 2 + 1);
   const mx = x + w - pad - orb; g.fillStyle = on('menu') ? '#ffffff' : '#f7fbf9'; g.beginPath(); g.arc(mx + orb / 2, y + h / 2, orb / 2, 0, 7); g.fill(); g.fillStyle = '#1a2422'; for (const k of [-4, 4]) g.fillRect(mx + orb / 2 - 10, y + h / 2 + k - 1, 20, 2);
   g.restore(); g.textAlign = 'left'; g.textBaseline = 'alphabetic';
   hot.push({ x: bx, y, w: bw, h, go: 'hello' }, { x: mx - 4, y, w: orb + 8, h, go: 'menu' });

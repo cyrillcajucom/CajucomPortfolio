@@ -3,13 +3,11 @@ export const content = {
   title: 'Cyrill Cajucom | Software & AI Engineer',
   description: 'Projects, experience and certifications of Cyrill Gerard P. Cajucom, a 4th-year BS Computer Science student in Manila building AI agents, full-stack apps and computer vision.',
   hero: {
-    badge: 'SOFTWARE & AI ENGINEER · MANILA',
-    line1: 'Engineered properly.',
-    line2: 'Built to ship.',
+    line1: 'Cyrill Cajucom.',
+    line2: 'Software and AI engineer.',
   },
   trustedLabel: 'Built with',
   built: {
-    chip: 'Recent builds',
     note: 'Use the arrows or swipe to look around. The address bar opens the project.',
     // the slider leads with a few screens of this project, then one screen of every other project
     lead: 'Ascend Core',

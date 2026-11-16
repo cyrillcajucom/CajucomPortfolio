@@ -6,16 +6,11 @@ const TOME_WORDS = {
   chapters: [
     { name: 'Summary', lead: "Completed FlyRank AI's Backend AI Engineering and AI Fluency tracks: nine backend builds and an AI image-matching capstone. 4th-year BS Computer Science student at FEU Institute of Technology, specializing in software engineering, Dean's Lister, looking for a 520-hour or 1,040-hour internship. 21 certifications, from SAP and PMI to seven Claude Academy courses.", pills: ['1 internship', '21 certifications', "Dean's Lister", 'Open to internships'] },
     { name: 'Experience', entries: [{ h: 'Backend AI Engineering Intern', m: 'FlyRank AI, Jul 2026 to Nov 2026. Manila, remote', d: [
-      'Backend AI Engineering track: nine builds plus a capstone, each a public GitHub repo built in staged, tested commits.',
-      'REST APIs in Python and FastAPI: a CRUD task API with data validation and Swagger docs, moved from SQLite to PostgreSQL in Docker Compose with a persistent volume.',
-      'Supabase auth: signup, login, bearer-token protected routes and logout, with secrets kept out of the repo.',
-      'A polite web scraper with rate limiting and caching, and Inngest background jobs with retries and scheduled runs.',
-      'A PDF report API that reuses finished reports and blocks duplicates under concurrent requests.',
+      'Nine backend builds and a capstone, each a public GitHub repo built in staged, tested commits.',
+      'REST APIs in Python and FastAPI with validation and Swagger docs, moved from SQLite to PostgreSQL in Docker Compose, with Supabase auth on protected routes.',
+      'Background work: a rate-limited, cached web scraper, Inngest jobs with retries and schedules, and a PDF report API that blocks duplicates under concurrent requests.',
       'An LLM behind an API: a versioned prompt, validated structured output with one repair try, usage logs, a kill switch and bounded retries.',
-      'An AI decision flow: a React Flow editor whose YES and NO branches run as Inngest steps on the LLM’s answer.',
-      'Capstone: an image-matching engine with local vision models, semantic ranking and a guard that refuses mismatched or uncertain images. 9 of 10 picks judged relevant on human review.',
-      'General AI Fluency track: audited my weekly workflow for what to hand to AI, iterated prompts, and planned and shipped a portfolio site with AI, disclosing its use.',
-      'Completed with a certificate.'] }] },
+      'Capstone: an image-matching engine with local vision models, semantic ranking and a guard that refuses mismatched or uncertain images. 9 of 10 picks judged relevant on human review.'] }] },
     { name: 'Education', entries: [
       { h: 'BS Computer Science, Software Engineering', m: 'FEU Institute of Technology, 2023 to 2027', d: "Dean's Lister, 3rd Term, S.Y. 2024-2025" },
       { h: 'Senior High School, STEM', m: 'St. Paul University at San Miguel, 2022 to 2023' },
@@ -600,9 +595,9 @@ function tomeCard(i, l, k = pr) { // k: pixels per unit; the pop-up asks for a s
 function tomeLayout() {
   if (tome.layout && tome.layout.W === W && tome.layout.H === H && tome.layout.pr === pr) return tome.layout;
   const tall = W / H < 1, short = !tall && H < 520, compact = tall || W < 860, measure = document.createElement('canvas').getContext('2d');
-  const cardW = tall ? W * .88 : short ? W * .4 : Math.min(W * .56, 800), cols = tall || short ? 1 : 3;
-  const l = { W, H, pr, tall, short, compact, measure, cardW, cols, cards: [], hot: [], size: Math.max(COARSE ? 14 : 11.5, Math.min(15.5, tall ? W / 27 : short ? H / 27 : Math.min(W / 72, H / 46))) };
-  const room = H * (tall ? .5 : short ? .84 : .46); // the fullest page sets the size, so the book stays put between pages
+  const cardW = tall ? W * .88 : short ? W * .4 : Math.min(W * .64, 940), cols = tall || short ? 1 : 3;
+  const l = { W, H, pr, tall, short, compact, measure, cardW, cols, cards: [], hot: [], size: Math.max(COARSE ? 14 : 11.5, Math.min(tall || short ? 15.5 : 17, tall ? W / 27 : short ? H / 27 : Math.min(W / 72, H / 46))) };
+  const room = H * (tall ? .5 : short ? .84 : .52); // the fullest page sets the size, so the book stays put between pages
   for (;;) { l.cardH = Math.max(...TOME_PAGES.map((c, i) => tomeInk(measure, i, cardW, l))); if (l.cardH <= room || l.size <= 9.5) break; l.size -= .5; }
   l.navH = compact ? 44 : 40; l.navY = short ? H * .955 - l.navH : H * (tall ? .945 : .95) - l.navH;
   l.navCx = W / 2; l.navW = Math.min(W * .86, 340);

@@ -73,7 +73,7 @@ void main() {
   vec3 color = sky;
   // a pale moon glow, upper right
   float moon = length(p - vec2(aspect * 0.78, 0.92));
-  color += vec3(0.55, 0.62, 0.85) * exp(-moon * moon * 5.0) * 0.22;
+  color += vec3(1.0, 0.9, 0.0) * exp(-moon * moon * 5.0) * 0.07;
   color = cloudPass(color, sky, p, aspect, t, 0.006, 0.10, 0.84, vec2(0.20, 0.10), 43.7, 1.0);
   color = cloudPass(color, sky, p, aspect, t, 0.008, 0.62, 0.73, vec2(0.24, 0.12), 71.3, 0.85);
   color = cloudPass(color, sky, p, aspect, t, 0.011, 0.33, 0.60, vec2(0.34, 0.16), 17.3, 0.55);
@@ -104,9 +104,9 @@ void main() {
   gl.enableVertexAttribArray(0);
   gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
   const u = (n) => gl.getUniformLocation(program, n);
-  gl.uniform3f(u('u_cloud'), 0.30, 0.34, 0.47);
-  gl.uniform3f(u('u_skyTop'), 0.012, 0.014, 0.03);
-  gl.uniform3f(u('u_skyBottom'), 0.05, 0.075, 0.15);
+  gl.uniform3f(u('u_cloud'), 0.29, 0.30, 0.31);
+  gl.uniform3f(u('u_skyTop'), 0.024, 0.02, 0.027);
+  gl.uniform3f(u('u_skyBottom'), 0.07, 0.072, 0.078);
   const uRes = u('u_res');
   const uTime = u('u_time');
 

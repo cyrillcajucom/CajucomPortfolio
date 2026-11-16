@@ -51,7 +51,7 @@
   // Checked in the scroll handler, not an IntersectionObserver: a jump down the page must also reveal what it skipped.
   let pending = [];
   if (!still) {
-    const groups = ['.built-head', '.built-stage', '.intro-side', '.cells', '.work-head', '.work-card', '.services-title', '.services .row', '.proof-copy', '.stat', '.process-sticky', '.tile-photo', '.blog .display', '.post', '.cert-all', '.faq .display', '.qa', '.cta-inner'];
+    const groups = ['.built-head', '.built-stage', '.intro-side', '.cells', '.work-head', '.work-card', '.services-title', '.services .row', '.proof-copy', '.stat', '.process-sticky', '.about', '.blog .display', '.post', '.cert-all', '.faq .display', '.qa', '.cta-inner'];
     for (const sel of groups) {
       document.querySelectorAll(sel).forEach((el, i) => {
         if (el.closest('dialog')) return;
@@ -112,6 +112,11 @@
       $('#hard-no').textContent = String(best + 1).padStart(2, '0');
       $('#hard-bar').style.width = `${((best + 1) / steps.length) * 100}%`;
     }
+    // The nav shows which part of the page is on screen.
+    let here = '';
+    for (const id of ['work', 'experience', 'certifications', 'faq']) if (document.getElementById(id).getBoundingClientRect().top <= vh * 0.4) here = id;
+    for (const a of document.querySelectorAll('.nav-links > a')) a.toggleAttribute('aria-current', a.getAttribute('href') === `#${here}`);
+    document.querySelector('.nav-dropdown-trigger').classList.toggle('is-current', here === 'work');
     // Stacked project cards shrink a little as the next card covers them.
     if (!still && innerWidth > 960) {
       stackCards.forEach((el, i) => {

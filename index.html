@@ -43,6 +43,7 @@ body { margin: 0; background: #050404; color: var(--paper); font-family: var(--b
   position: absolute; left: 16px; right: 16px; margin: 0; text-align: center; pointer-events: none;
   font: 400 clamp(18px, 2vw, 24px)/1.15 var(--mono); letter-spacing: .08em; color: var(--amber); text-shadow: 0 1px 3px #000;
 }
+.hint { font-size: clamp(20px, 2.3vw, 28px); color: #ffe9a6; text-shadow: 0 0 10px #000, 0 2px 4px #000; } /* the first thing a visitor must read */
 .hint { bottom: calc(14px + env(safe-area-inset-bottom, 0px)); transition: opacity .4s; }
 .loading { top: 50%; }
 .loading { left: 50%; right: auto; width: min(320px, calc(100% - 48px)); transform: translate(-50%, -50%); }
@@ -96,6 +97,8 @@ body:not(.inside) #ui { display: none; }
 #links[hidden] { display: none; }
 #links a { background: rgba(27,60,99,.85); color: #f4ecd8; border: 1.5px solid #f4ecd8; border-radius: 99px; padding: 11px 18px; min-height: 44px; box-sizing: border-box; font: 400 16px/1.2 Righteous, "Segoe UI", sans-serif; white-space: nowrap; text-decoration: none; box-shadow: 0 0 18px rgba(63,193,176,.35); } /* in the Projects box's colours */
 #links a:hover { background: #3fc1b0; color: #14284b; }
+#links a:first-child { background: var(--yellow); border-color: var(--yellow); color: #14284b; }
+#links a:first-child:hover { background: #fff36b; }
 @media (max-width: 600px) { #links { max-width: calc(100% - 186px); gap: 6px; } #links a { padding: 11px 9px; font-size: 16px; } }
 dialog .socials { display: flex; flex-wrap: wrap; gap: 8px; max-width: none; }
 @media (max-width: 600px), (max-height: 480px) { #back { min-height: 44px; padding: 7px 11px; font-size: 18px; } } /* still a full finger target, but no bigger than the cards around it */
@@ -139,8 +142,11 @@ dialog .topics li { padding: 5px 13px; border-radius: 99px; background: #3fc1b0;
 dialog .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
 dialog button, dialog .socials a { display: inline-flex; align-items: center; min-height: 44px; box-sizing: border-box; padding: 9px 18px; border: 1.5px solid #f4ecd8; border-radius: 99px; background: #1b3c63; color: #f4ecd8; font: 400 15px/1 Righteous, "Segoe UI", sans-serif; text-decoration: none; cursor: pointer; }
 dialog button:hover, dialog .socials a:hover { background: #27527a; }
-dialog button:not(.ghost) { background: #3fc1b0; color: #14284b; }
-dialog button:not(.ghost):hover { background: #62d8c8; }
+dialog button:not(.ghost) { background: var(--yellow); border-color: var(--yellow); color: #14284b; } /* one colour for the main action in every world: the TV's yellow */
+dialog button:not(.ghost):hover { background: #fff36b; }
+dialog .socials a.main, body:not(.in-works) dialog .socials a.main { background: var(--yellow); border-color: var(--yellow); color: #14284b; }
+dialog .socials a.main:hover, body:not(.in-works) dialog .socials a.main:hover { background: #fff36b; color: #14284b; }
+dialog .socials a.minor { min-height: 36px; padding: 5px 12px; font-size: 14px; opacity: .8; }
 dialog :focus-visible { outline-color: #ff8a5c; }
 body:not(.in-works) dialog:not(#zoom):not(#guide):not(#leave):not(#phone-reader):not(#phone-jump) { background: #0d0d0e; color: var(--paper); border: 2px solid var(--paper); border-radius: 8px; box-shadow: 6px 7px 0 rgba(0,0,0,.6), 0 18px 60px rgba(0,0,0,.7); }
 body:not(.in-works) dialog:not(#zoom):not(#guide):not(#leave):not(#phone-reader):not(#phone-jump)::backdrop { background: rgba(0,0,0,.72); }
@@ -259,8 +265,8 @@ body:not(.in-works) dialog :focus-visible { outline-color: var(--yellow); }
   <h2 id="contact-title" class="tape">Say hello</h2>
   <p>Open to work, and looking for a 520-hour or 1,040-hour internship.</p>
   <p class="address" id="address">cyrillgerardc@gmail.com</p>
-  <p class="socials"><a href="https://www.linkedin.com/in/cyrillcajucom/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/cyrillcajucom" target="_blank" rel="noopener">GitHub</a><a href="https://www.facebook.com/cyrillgerardcajucom10" target="_blank" rel="noopener">Facebook</a><a href="https://discord.com/users/700210477288128593" target="_blank" rel="noopener">Discord</a><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=cyrillgerardc@gmail.com" target="_blank" rel="noopener">Gmail</a></p>
-  <div class="row"><button type="button" id="copy">Copy address</button><button type="button" class="ghost" data-close>Close</button></div>
+  <p class="socials"><a class="main" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=cyrillgerardc@gmail.com" target="_blank" rel="noopener">Gmail</a><a href="https://www.linkedin.com/in/cyrillcajucom/" target="_blank" rel="noopener">LinkedIn</a><a href="https://github.com/cyrillcajucom" target="_blank" rel="noopener">GitHub</a><a class="minor" href="https://www.facebook.com/cyrillgerardcajucom10" target="_blank" rel="noopener">Facebook</a><a class="minor" href="https://discord.com/users/700210477288128593" target="_blank" rel="noopener">Discord</a></p>
+  <div class="row"><button type="button" id="copy" class="ghost">Copy address</button><button type="button" class="ghost" data-close>Close</button></div>
 </dialog>
 <dialog id="leave" data-look="resume" aria-labelledby="leave-title">
   <h2 id="leave-title">Leave the résumé?</h2>
@@ -1145,7 +1151,7 @@ function projectWords(c, x, y, w, size, split, draw) { // returns where the word
   // What it is, and beside it (below it, when tall) the topics.
   const copyW = split ? w * .6 : w; g.font = `600 ${size}px ${WORKS_BODY}`; const copy = wrapLines(c.copy || COPY, copyW);
   const top = y;
-  for (const line of copy) { if (draw) text(g, line, x, y, size, WORKS_BODY, 'rgba(244,236,216,.94)', 'left'); y += size * 1.62; breaks.push(y - size * .81); }
+  for (const line of copy) { if (draw) text(g, line, x, y, size, WORKS_BODY, '#f4ecd8', 'left'); y += size * 1.62; breaks.push(y - size * .81); }
   const topics = c.topics || [], ts = Math.max(11, size * .78);
   let ty = split ? top - size * .5 : y + size * .6, tx = split ? x + w * .68 : x;
   if (topics.length) {
@@ -1174,7 +1180,7 @@ function drawProject() {
   const { c, p } = view, now = performance.now(), t = reduced ? 0 : now / 1000, ease = 1 - (1 - p) ** 3, split = W > H * 1.05 && W >= 760 && !(typeof mobileLayout === 'function' && mobileLayout());
   // The left side (all of it when tall), and the words' column.
   const lx = split ? Math.max(28, W * .05) : 0, lw = split ? W * .5 : W, mid = lx + lw / 2, colX = split ? W * .6 : Math.max(20, W * .07), colW = split ? W * .95 - colX : W - colX * 2;
-  const cw = split ? lw : Math.min(W - 40, 640), bodySize = Math.max(15, Math.min(19, (split ? colW : cw) * (split ? .042 : .03))), width = Math.min(cw, 640), caption = Math.max(15, Math.min(18, cw * .028));
+  const cw = split ? lw : Math.min(W - 40, 640), bodySize = Math.max(15, Math.min(split ? 21 : 19, (split ? colW : cw) * (split ? .044 : .03))), width = Math.min(cw, 640), caption = Math.max(15, Math.min(18, cw * .028));
   if (c.shots) worksLoadShots(c); // once; the pictures may not have loaded yet if the page opened without the list
   if (!c.shots) { const bw = Math.round(Math.min(cw, H * .62 * 1.6)); c.heroBmp = c.heroBmp || bitmap(c, bw, Math.round(bw * .62)); c.detailBmp = c.detailBmp || bitmap(c, cw, Math.round(cw * .46), 1.7); }
   g.font = `${bodySize}px ${WORKS_BODY}`;

@@ -45,7 +45,7 @@ export function buildPage(root = path.resolve(here, '..')) {
 
   const experience = chapter(tome, 'Experience').entries;
   const education = chapter(tome, 'Education').entries;
-  assert.ok(experience.some((e) => [].concat(e.d).join(' ').includes('nine builds plus a capstone')), 'FlyRank "9 + 1" no longer matches the Experience text');
+  assert.ok(experience.some((e) => /nine (backend )?builds (plus|and) a capstone/i.test([].concat(e.d).join(' '))), 'FlyRank "9 + 1" no longer matches the Experience text');
   const logo = (m) => C.logos.find(([k]) => m.includes(k))?.[1];
   const rows = [...experience, ...education].map((e) => {
     const d = [].concat(e.d || []);
@@ -74,7 +74,7 @@ export function buildPage(root = path.resolve(here, '..')) {
   const body = [
     UI.Navbar({ projects, email: C.links.email }),
     '<main>',
-    UI.Hero({ ...C.hero, sub: summary.lead, meta: summary.pills, email: C.links.email }),
+    UI.Hero({ ...C.hero, sub: summary.lead, email: C.links.email }),
     UI.TrustedMarquee({ label: C.trustedLabel, row1: langAI.entries.flatMap((e) => e.pills), row2: [...issuers] }),
     UI.BuiltShowcase({ ...C.built, slides }),
     UI.IntroServices({ ...C.intro, cells: C.intro.cells.map((c) => ({ ...c, id: byName(c.project).id })) }),
