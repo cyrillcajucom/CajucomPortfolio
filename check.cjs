@@ -45,7 +45,7 @@ const wrapper = () => `<!doctype html><html><head><meta charset="utf-8"><meta na
     return;
   }
 
-  const PHONE = { deviceScaleFactor: 3, hasTouch: true, isMobile: true }, TOMES = 9;
+  const PHONE = { deviceScaleFactor: 3, hasTouch: true, isMobile: true }, TOMES = 10;
   for (const [name, viewport, device] of [['desktop', { width: 1440, height: 860 }], ['phone', { width: 390, height: 844 }, PHONE], ['small', { width: 360, height: 640 }, PHONE], ['landscape', { width: 844, height: 390 }, PHONE]].filter(([n]) => !process.argv[2] || n === process.argv[2])) { // `node check.cjs landscape` runs one size
     const context = await browser.newContext({ viewport, ...device });
     const page = await context.newPage();

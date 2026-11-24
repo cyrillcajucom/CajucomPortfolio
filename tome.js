@@ -4,7 +4,7 @@
 const TOME_WORDS = {
   cover: 'Experiences',
   chapters: [
-    { name: 'Summary', lead: "Completed FlyRank AI's Backend AI Engineering and AI Fluency tracks: nine backend builds and an AI image-matching capstone. 4th-year BS Computer Science student at FEU Institute of Technology, specializing in software engineering, Dean's Lister, looking for a 520-hour or 1,040-hour internship. 21 certifications, from SAP and PMI to seven Claude Academy courses.", pills: ['1 internship', '21 certifications', "Dean's Lister", 'Open to internships'] },
+    { name: 'Summary', lead: "Completed FlyRank AI's Backend AI Engineering and AI Fluency tracks: nine backend builds and an AI image-matching capstone. 4th-year BS Computer Science student at FEU Institute of Technology, specializing in software engineering, Dean's Lister, looking for a 520-hour or 1,040-hour internship. 23 certifications, from SAP and PMI to seven Claude Academy courses.", pills: ['1 internship', '23 certifications', "Dean's Lister", 'Open to internships'] },
     { name: 'Experience', entries: [{ h: 'Backend AI Engineering Intern', m: 'FlyRank AI, Jul 2026 to Nov 2026. Manila, remote', d: [
       'Nine backend builds and a capstone, each a public GitHub repo built in staged, tested commits.',
       'REST APIs in Python and FastAPI with validation and Swagger docs, moved from SQLite to PostgreSQL in Docker Compose, with Supabase auth on protected routes.',
@@ -27,13 +27,17 @@ const TOME_WORDS = {
         { h: 'IT Specialist: Python', m: 'Pearson, Jul 2025', img: 'it-specialist-python', big: true, d: 'Certiport code bhzD-s4NA', verify: ['Verify', 'https://www.credly.com/badges/e733f033-0bf7-428b-b41a-354c50ad4899'] },
       ] },
       { label: 'Claude Academy', lead: 'Seven courses from Anthropic, September 2026.', badges: [['Building effective human-agent teams', 'claude-human-agent-teams', false, 'https://academy.claude.com/verify/33af33deadedcfdbc288fd5403658dd8'], ['Claude Platform 101', 'claude-platform-101', false, 'https://academy.claude.com/verify/10c579e002b4ca58eb0bc792bf832c27'], ['Claude Code 101', 'claude-code-101', false, 'https://academy.claude.com/verify/8e77273ffb4eb4771031a1b06928f692'], ['Claude Code in action', 'claude-code-in-action', false, 'https://academy.claude.com/verify/121239664057fa35d83db490eaffde23'], ['AI capabilities and limitations', 'claude-ai-capabilities', true, 'https://academy.claude.com/verify/00df819cd8f793402ac8a521e5a422d3'], ['Introduction to Model Context Protocol', 'claude-mcp-intro', false, 'https://academy.claude.com/verify/b55a1681bcb6bd5c4901f64fcea3e033'], ['Model Context Protocol: Advanced topics', 'claude-mcp-advanced', false, 'https://academy.claude.com/verify/74a03fa1630f1b817b67898315cf045e']] },
+      { label: 'Cisco Networking Academy', entries: [
+        { h: 'Introduction to Cybersecurity', m: 'Cisco Networking Academy, Nov 2026', img: 'cisco-intro-cybersecurity', big: true, d: 'Through FEU Institute of Technology', verify: ['Verify', 'https://www.netacad.com/recognitions/verify/ab2518a2-0e20-49f9-9708-db62a1131df7'] },
+        { h: 'Cybersecurity Essentials', m: 'Cisco Networking Academy, Nov 2026', img: 'cisco-cybersecurity-essentials', big: true, d: 'Through FEU Institute of Technology', verify: ['Verify', 'https://www.netacad.com/recognitions/verify/7fe1f4e3-7cfc-4ae7-9d46-1ff8406928e9'] },
+        { h: 'CCNA: Introduction to Networks', m: 'Cisco Networking Academy, Sep 2025', img: 'cisco-ccna-itn', big: false },
+      ] },
       { label: 'Courses', dense: true, entries: [
         { h: 'Introduction to ESG', m: 'LinkedIn Learning, Nov 2026', img: 'linkedin-esg-intro', big: true, verify: ['Verify', 'https://www.linkedin.com/learning/certificates/3064eb85292f8849f8300b5b72d39011c33a77bea995cf6ddd8f7d6157b1880d'] },
         { h: 'Driving Sustainability at Your Organization', m: 'LinkedIn Learning, Nov 2026', img: 'linkedin-driving-sustainability', big: true, verify: ['Verify', 'https://www.linkedin.com/learning/certificates/b8f1aadc9227306f89f7288fde0d37574bef4c190d1789182859d30a53fdc61e'] },
         { h: 'AI Agent Fundamentals', m: 'Databricks, Sep 2026', img: 'databricks-ai-agents', big: true },
         { h: 'Intro to Deep Learning', m: 'Kaggle, Sep 2026', img: 'kaggle-deep-learning', big: false, verify: ['Verify', 'https://www.kaggle.com/learn/certification/cyrillgerardcajucom/intro-to-deep-learning'] },
         { h: 'MATLAB Onramp', m: 'MathWorks, Nov 2025', img: 'matlab-onramp', big: true, verify: ['Verify', 'https://matlabacademy.mathworks.com/progress/share/certificate.html?id=4f37ec58-fd34-45e3-92fb-649652efded7'] },
-        { h: 'CCNA: Introduction to Networks', m: 'Cisco, Sep 2025', img: 'cisco-ccna-itn', big: false },
         { h: 'Android Development with Kotlin', m: 'LinkedIn Learning, Nov 2025', img: 'linkedin-kotlin', big: false, verify: ['Verify', 'https://www.linkedin.com/learning/certificates/8eb3d916ea590ae8a1d07f910ac21602b64e59b5c914ddf699c899637890adc4'] },
         { h: 'Agile Software Development', m: 'LinkedIn Learning, Nov 2025', img: 'linkedin-agile', big: false, verify: ['Verify', 'https://www.linkedin.com/learning/certificates/5bc8460a0b9d56e77d4fdc51f4e20cb016fb940a99df59edb9f2166f122a7395'] },
       ] },

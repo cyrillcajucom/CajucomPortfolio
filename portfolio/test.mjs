@@ -9,8 +9,8 @@ import { loadData, slug, certGroups, certCount, shotList, esc } from './data.mjs
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { tome, works } = loadData(root);
 
-assert.equal(certCount(tome), 21);
-assert.deepEqual(certGroups(tome).map((g) => g.label), ['Professional', 'Claude Academy', 'Courses']);
+assert.equal(certCount(tome), 23);
+assert.deepEqual(certGroups(tome).map((g) => g.label), ['Professional', 'Claude Academy', 'Cisco Networking Academy', 'Courses']);
 assert.ok(certGroups(tome)[1].items.every((c) => c.h && c.img && c.verify?.[1].startsWith('https://')), 'badges normalised');
 assert.equal(works.items.length, 7);
 assert.equal(slug('Wake&Brake'), 'wake-brake');
