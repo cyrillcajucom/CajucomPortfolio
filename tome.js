@@ -12,7 +12,7 @@ const TOME_WORDS = {
       'An LLM behind an API: a versioned prompt, validated structured output with one repair try, usage logs, a kill switch and bounded retries.',
       'Capstone: an image-matching engine with local vision models, semantic ranking and a guard that refuses mismatched or uncertain images. 9 of 10 picks judged relevant on human review.'] }] },
     { name: 'Education', entries: [
-      { h: 'BS Computer Science, Software Engineering', m: 'FEU Institute of Technology, 2023 to 2027', d: "Dean's Lister, 3rd Term, S.Y. 2024-2025" },
+      { h: 'BS Computer Science, Software Engineering', m: 'FEU Institute of Technology, 2023 to 2027', d: ['Tan Yan Kee Foundation Scholar, full tuition, 2023 to present', "Dean's Lister, 3rd Term, S.Y. 2024-2025"] },
       { h: 'Senior High School, STEM', m: 'St. Paul University at San Miguel, 2022 to 2023' },
       { h: 'Senior High School, STEM', m: 'San Miguel National High School, 2021 to 2022', d: 'With High Honors' },
       { h: 'Primary and Junior High School', m: 'St. Paul University at San Miguel, 2011 to 2021' },

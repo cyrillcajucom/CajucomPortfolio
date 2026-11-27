@@ -69,7 +69,8 @@ export function buildPage(root = path.resolve(here, '..')) {
 
   const tagCount = (tag) => projects.filter((p) => p.tags.includes(tag)).length;
   const core = byName('Ascend Core');
-  const dean = education.find((e) => /Dean's Lister/.test(e.d || ''));
+  const dean = education.find((e) => [].concat(e.d).some((d) => /Dean's Lister/.test(d || '')));
+  const deanTerm = [].concat(dean.d).find((d) => /Dean's Lister/.test(d)).replace("Dean's Lister, ", '');
 
   const body = [
     UI.Navbar({ projects, email: C.links.email }),
@@ -86,7 +87,7 @@ export function buildPage(root = path.resolve(here, '..')) {
         { num: String(projects.length), label: 'PROJECTS', desc: `${tagCount('Solo')} solo, ${tagCount('Capstone')} capstone, ${tagCount('Thesis')} team thesis, ${tagCount('Video')} video for a friend. Each with a demo video.` },
         { num: '9 + 1', label: 'FLYRANK AI BUILDS', desc: 'Nine backend builds and a capstone in the Backend AI Engineering internship.' },
         { num: String(count), label: 'CERTIFICATIONS', desc: 'From SAP and PMI to seven Anthropic Academy courses. Most have a public verify link.' },
-        { num: "Dean's", label: 'LISTER', desc: `${dean.m.split(',')[0]}, ${dean.d.replace("Dean's Lister, ", '')}.` },
+        { num: "Dean's", label: 'LISTER', desc: `${dean.m.split(',')[0]}, ${deanTerm}.` },
       ],
     }),
     UI.WhyUsBento({
